@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='Library Demo - Dettagli Editore')"></head>
+<head th:replace="fragments/base.html :: headerfiles(title='Library Demo - Cancella Editore')"></head>
 <body>
 	<header th:replace="fragments/base.html :: header"></header>
 	<div>
 		<br>
-		<h2>Dettagli editore: </h2>
+		<h2>Cancella editore: </h2>
 		<br>
 		<div class="scatola">
 			<br>
@@ -17,11 +17,9 @@
 			<span th:text="${editore.annoFondazione}">annoFondazione</span><br><br>
 			<span>Paese:</span><span>&nbsp;</span>
 			<span th:text="${editore.paese}">Paese</span><br><br>
-			<span>Opere pubblicate:</span><span>&nbsp;</span>
-			<ul th:each="l : ${libri}">
-				<li><a href="libro.html"  th:href="@{'/libro' + '/' + ${l.id} }" th:text="${l.titolo}">Libro pubblicato</a></li>
-			</ul>
-			<br>
+			<div>
+		   		<a href="editore.html" th:href="@{'/deleteEditore' + '/' + ${editore.id} }" th:text="Elimina">Elimina</a>
+			 </div>
 			<br>
 		</div>
 	</div>

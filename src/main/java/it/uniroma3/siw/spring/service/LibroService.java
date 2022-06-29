@@ -25,6 +25,11 @@ public class LibroService {
 	}
 	
 	@Transactional
+	public void update(Libro l) {
+		repository.save(l);
+	}
+	
+	@Transactional
 	public void delete(Libro l) {
 		repository.delete(l);
 	}

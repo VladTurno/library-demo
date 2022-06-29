@@ -28,6 +28,11 @@ public class AutoreService {
 	}
 	
 	@Transactional
+	public void update(Autore a) {
+		repository.save(a);
+	}
+	
+	@Transactional
 	public void delete(Autore a) {
 		repository.delete(a);
 	}

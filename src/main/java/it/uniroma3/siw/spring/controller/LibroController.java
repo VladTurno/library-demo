@@ -49,7 +49,7 @@ public class LibroController {
 		if(!binding.hasErrors()) {
 			service.save(libro);
 			model.addAttribute("libri", service.findAll());
-			return "libri.html";
+			return "libriAdmin.html";
 		}
 		else return "libroForm.html";
 	}
@@ -75,9 +75,27 @@ public class LibroController {
 		return "libro.html";
 	}
 	
-	@GetMapping("/toUpdateLibro")
-	public String toUpdateLibro(Model model) {
+	@GetMapping("/toUpdateLibro/{id}")
+	public String toUpdateLibro(@PathVariable("id") Long id, Model model) {
+		Libro libro = service.findById(id);
+		model.addAttribute("libro", libro);
+		List<Autore> autori = autoreService.findAll();
+		model.addAttribute("autori", autori);
+		List<Editore> editori = editoreService.findAll();
+		model.addAttribute("editori", editori);
 		return "toUpdateLibro.html";
+	}
+	
+	@Transactional
+	@PostMapping("/updateLibro")
+	public String updateLibro(@ModelAttribute("libro") Libro libro, Model model, BindingResult binding) {
+		validator.validate(libro, binding);
+		if(!binding.hasErrors()) {
+			service.update(libro);
+			model.addAttribute("libro", service.findById(libro.getId()));
+			return "libro.html";
+		}
+		else return "toUpdateLibro.html";
 	}
 	
 	@GetMapping("/toDeleteLibro/{id}")
@@ -90,10 +108,11 @@ public class LibroController {
 	@Transactional
 	@GetMapping("/deleteLibro/{id}")
 	public String deleteLibro(@PathVariable("id") Long id, Model model) {
-		this.service.delete(id);
+		Libro l = this.service.findById(id);
+		this.service.delete(l);
 		List<Libro> libri = service.findAll();
 		model.addAttribute("libri", libri);
-		return "libri.html";
+		return "libriAdmin.html";
 	}
 	
 }

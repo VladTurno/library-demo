@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Library Demo - Modifica autore')"></head>
+<body>
+	<header th:replace="fragments/base.html :: header"></header>
+	<div>
+		<br>
+		<h2>Modifica autore: </h2>
+		<br>
+		<div class="scatola">
+			<form th:action="@{/updateAutore}" method="POST" th:object="${autore}">
+			<div th:if="${#fields.hasGlobalErrors()}">
+	    		<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">ERRORE</p> 
+	  		</div>
+	  		<br>
+	  		<div>
+	    		<span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span><br>
+	    		<span><input value="${autore.id}" type="text" th:field="*{id}" /></span>
+	  		</div> 
+	  		<br>
+	  		<div>
+	    		<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span><br>
+	    		<span><input value="${autore.nome}" type="text" th:field="*{nome}" /></span>
+	  		</div> 
+	  		<br>
+	 		 <div>
+	 		 	<span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span><br>
+	    		<span><input value="${autore.cognome}" type="text" th:field="*{cognome}" /></span>
+	 		 </div> 
+	 		 <br>
+	 		 <div>
+	 			 <span th:if="${#fields.hasErrors('annoNascita')}" th:errors="*{annoNascita}"></span><br>
+	    		<span><input value="${autore.annoNascita}" type="number" th:field="*{annoNascita}" /></span>
+	 		 </div> 
+	 		 <br>
+	  		 <div>
+	  		 	<span th:if="${#fields.hasErrors('cittaNatale')}" th:errors="*{cittaNatale}"></span><br>
+	    		<span><input value="${autore.cittaNatale}" type="text" th:field="*{cittaNatale}" /></span>
+	  		 </div> 
+	  		 <br>
+	 		 <div>
+	    		<span><button type="submit">Conferma</button></span>
+	  		 </div>
+	  		 <br>
+		</form>
+		</div>
+	</div>
+	<br>
+    <footer th:replace="fragments/base.html :: footer('/default')"></footer>
+</body>
+</html>

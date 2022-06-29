@@ -36,7 +36,7 @@ public class EditoreController {
 		if(!binding.hasErrors()) {
 			service.save(editore);
 			model.addAttribute("editori", service.findAll());
-			return "editori.html";
+			return "editoriAdmin.html";
 		}
 		else return "editoreForm.html";
 	}
@@ -64,9 +64,23 @@ public class EditoreController {
 		return "editore.html";
 	}
 	
-	@GetMapping("/toUpdateEditore")
-	public String toUpdateEditore(Model model) {
+	@GetMapping("/toUpdateEditore/{id}")
+	public String toUpdateEditore(@PathVariable("id") Long id, Model model) {
+		Editore editore = service.findById(id);
+		model.addAttribute("editore", editore);
 		return "toUpdateEditore.html";
+	}
+	
+	@Transactional
+	@PostMapping("/updateEditore")
+	public String updateEditore(@ModelAttribute("editore") Editore editore, Model model, BindingResult binding) {
+		validator.validate(editore, binding);
+		if(!binding.hasErrors()) {
+			service.update(editore);
+			model.addAttribute("editore", service.findById(editore.getId()));
+			return "editore.html";
+		}
+		else return "updateEditore.html";
 	}
 	
 	@GetMapping("/toDeleteEditore/{id}")
@@ -82,7 +96,7 @@ public class EditoreController {
 		this.service.delete(id);
 		List<Editore> editori = service.findAll();
 		model.addAttribute("editori", editori);
-		return "editori.html";
+		return "editoriAdmin.html";
 	}
 	
 }

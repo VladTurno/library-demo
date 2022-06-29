@@ -24,6 +24,10 @@ public class AutoreValidator implements Validator {
 		if(autoreService.alreadyExists((Autore) o)) {
 			errors.reject("autore.duplicato");
 		}
+		Autore a = (Autore) o;
+		if(a.getNome()==null) {
+			errors.reject("autore.noNome");
+		}
 	}
 
 }

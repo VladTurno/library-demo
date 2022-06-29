@@ -16,8 +16,8 @@
 			<td><a href="libro.html" th:href="@{'/libro' + '/' + ${libro.id} }" th:text="${libro.titolo}">titolo</a></td>
 			<td><a href="autore.html" th:href="@{'/autore' + '/' + ${libro.getAutore().getId()} }" th:text="${libro.autore.getNomeCompleto()}">autore</a></td>
 			<td><a href="editore.html" th:href="@{'/editore' + '/' + ${libro.getEditore().getId()} }" th:text="${libro.editore.getNome()}">editore</a></td>
-			<td>modifica</td>
-			<td>elimina</td>
+			<td><a href="toUpdateLibro.html" th:href="@{'/toUpdateLibro' + '/' + ${libro.id} }" th:text="modifica">modifica</a></td>
+			<td><a href="toDeleteLibro.html" th:href="@{'/toDeleteLibro' + '/' + ${libro.id} }" th:text="elimina">elimina</a></td>
 		</table>
 		</div>
 	</div>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Library Demo - Modifica libro')"></head>
+<body>
+	<header th:replace="fragments/base.html :: header"></header>
+	<div>
+		<br>
+		<h2>Modifica libro: </h2>
+		<br>
+		<div class="scatola">
+			<form th:action="@{/updateLibro}" method="POST" th:object="${libro}">
+			<div th:if="${#fields.hasGlobalErrors()}">
+	    		<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">ERRORE</p> 
+	  		</div>
+	  		<br>
+	  		<div>
+	    		<span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span><br>
+	    		<span><input value="@{libro.id}" type="text" th:field="*{id}" /></span>
+	  		</div> 
+	  		<br>
+	  		<div>
+	    		<span th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></span><br>
+	    		<span><input value="@{libro.titolo}" type="text" th:field="*{titolo}" /></span>
+	  		</div> 
+	  		<br>
+	  		 <div>
+	  		 	<span th:if="${#fields.hasErrors('trama')}" th:errors="*{trama}"></span><br>
+	    		<span><input value="@{libro.trama}" type="text" th:field="*{trama}" /></span>
+	  		 </div> 
+	  		 <br>
+	  		 <div>
+	  		 	Help! Non riesco a fare la select di autore ed editore e la diagnostica di java e' a dir poco brutta!
+	  		 </div>
+	  		 <!-- <div>
+  		 		<label>Seleziona autore: </label><span>&nbsp;&nbsp;</span>
+  		 		<select th:field="*{autore}" th:selected=${libro.getAutore().getNomeCompleto()}>
+  		 			<option th:each="a : ${autori}" th:value="${a.getId()}" th:text="${a.getNomeCompleto()}"></option>
+  		 		</select>
+	  		 </div>
+			<br>
+	  		<div>
+  		 		<label>Seleziona editore: </label><span>&nbsp;&nbsp;</span>
+  		 		<select th:field="*{editore}" th:selected=${libro.getEditore().getNome()}>
+  		 			<option th:each="e : ${editori}" th:value="${e.getId()}" th:text="${e.getNome()}"></option>
+  		 		</select>
+	  		 </div> -->
+	  		 <br>
+	 		 <div>
+	    		<span><button type="submit">Conferma</button></span>
+	  		 </div>
+	  		 <br>
+		</form>
+		</div>
+	</div>
+	<br>
+    <footer th:replace="fragments/base.html :: footer('/default')"></footer>
+</body>
+</html>

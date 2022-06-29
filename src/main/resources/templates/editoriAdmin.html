@@ -16,8 +16,8 @@
 			<td th:text="${editore.nome}">nome</td>
 			<td th:text="${editore.paese}">paese</td>
 			<td><a href="editore.html" th:href="@{'/editore' + '/' + ${editore.id} }" th:text="dettagli">dettagli</a></td>
-			<td>modifica</td>
-			<td>elimina</td>
+			<td><a href="toUpdateEditore.html" th:href="@{'/toUpdateEditore' + '/' + ${editore.id} }" th:text="modifica">modifca</a></td>
+			<td><a href="toDeleteEditore.html" th:href="@{'/toDeleteEditore' + '/' + ${editore.id} }" th:text="elimina">elimina</a></td>
 		</table>
 		</div>
 	</div>

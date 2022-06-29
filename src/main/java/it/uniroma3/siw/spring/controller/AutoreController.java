@@ -31,12 +31,12 @@ public class AutoreController {
 	}
 	
 	@RequestMapping(value = "/autore", method = RequestMethod.POST)
-	public String addAutore(@ModelAttribute("autore") Autore autore, Model model, BindingResult binding) {
+	public String addAutore(@ModelAttribute("autore") Autore autore, BindingResult binding, Model model) {
 		validator.validate(autore, binding);
 		if(!binding.hasErrors()) {
 			service.save(autore);
 			model.addAttribute("autori", service.findAll());
-			return "autori.html";
+			return "autoriAdmin.html";
 		}
 		else return "autoreForm.html";
 	}
@@ -64,9 +64,23 @@ public class AutoreController {
 		return "autore.html";
 	}
 	
-	@GetMapping("/toUpdateAutore")
-	public String toUpdateAutore(Model model) {
+	@GetMapping("/toUpdateAutore/{id}")
+	public String toUpdateAutore(@PathVariable("id") Long id, Model model) {
+		Autore autore = service.findById(id);
+		model.addAttribute("autore", autore);
 		return "toUpdateAutore.html";
+	}
+	
+	@Transactional
+	@PostMapping("/updateAutore")
+	public String updateAutore(@ModelAttribute("autore") Autore autore, Model model, BindingResult binding) {
+		validator.validate(autore, binding);
+		if(!binding.hasErrors()) {
+			service.update(autore);
+			model.addAttribute("autore", service.findById(autore.getId()));
+			return "autore.html";
+		}
+		else return "updateAutore.html";
 	}
 	
 	@GetMapping("/toDeleteAutore/{id}")
@@ -82,7 +96,7 @@ public class AutoreController {
 		this.service.delete(id);
 		List<Autore> autori = service.findAll();
 		model.addAttribute("autori", autori);
-		return "autori.html";
+		return "autoriAdmin.html";
 	}
 	
 }

@@ -27,6 +27,11 @@ public class EditoreService {
 	}
 	
 	@Transactional
+	public void update(Editore e) {
+		repository.save(e);
+	}
+	
+	@Transactional
 	public void delete(Editore e) {
 		repository.delete(e);
 	}

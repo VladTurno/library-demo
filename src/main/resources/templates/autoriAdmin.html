@@ -16,8 +16,8 @@
 			<td th:text="${autore.nome}">nome</td>
 			<td th:text="${autore.cognome}">cognome</td>
 			<td><a href="autore.html" th:href="@{'/autore' + '/' + ${autore.id} }" th:text="dettagli">dettagli</a></td>
-			<td>modifica</td>
-			<td>elimina</td>
+			<td><a href="toUpdateAutore.html" th:href="@{'/toUpdateAutore' + '/' + ${autore.id} }" th:text="modifica">modifica</a></td>
+			<td><a href="toDeleteAutore.html" th:href="@{'/toDeleteAutore' + '/' + ${autore.id} }" th:text="elimina">elimina</a></td>
 		</table>
 		</div>
 	</div>
