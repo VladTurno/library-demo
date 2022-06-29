@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='Library Demo')"> </head>
+<body>
+	<header th:replace="fragments/base.html :: header"></header>
+    <div>
+    	<br>
+    	<h2 th:text="#{header.index}">Benvenuto</h2>
+    	<br>
+		<div class="scatola">
+			<br>
+			<div>
+				<a th:href="@{/login}" th:text="#{index.login}">Accedi</a>
+	   		</div>
+	   		<br>
+			<div>
+				<a th:href="@{/register}" th:text="#{index.register}">Registrati</a>
+	   		</div>
+	   		<br>
+	   	</div>
+    </div>
+</body>
+</html>

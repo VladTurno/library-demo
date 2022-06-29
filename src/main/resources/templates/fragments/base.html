@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerfiles(title)">
+	<meta charset="UTF-8" />
+	<link th:href="@{/css/my-style.css}" rel="stylesheet">
+	<title th:text="${title}"></title>
+</head>
+<body>
+	<header th:fragment="header">
+		<h1>Library Demo</h1>
+	</header>
+	
+	<footer th:fragment="footer(home)">
+		<a th:href="@{${home}}">Torna alla HomePage</a>
+	</footer>
+</body>
+</html>

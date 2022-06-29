@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Library Demo - Dettagli Editore')"></head>
+<body>
+	<header th:replace="fragments/base.html :: header"></header>
+	<div>
+		<br>
+		<h2>Dettagli editore: </h2>
+		<br>
+		<div class="scatola">
+			<br>
+			<span>Id:</span><span>&nbsp;</span>
+			<span th:text="${editore.id}">id</span><br><br>
+			<span>Nome:</span><span>&nbsp;</span>
+			<span th:text="${editore.nome}">nome</span><br><br>
+			<span>Anno di fondazione:</span><span>&nbsp;</span>
+			<span th:text="${editore.annoFondazione}">annoFondazione</span><br><br>
+			<span>Paese:</span><span>&nbsp;</span>
+			<span th:text="${editore.paese}">Paese</span><br><br>
+			<span>Opere pubblicate:</span><span>&nbsp;</span>
+			<ul th:each="l : ${libri}">
+				<li><a href="libro.html"  th:href="@{'/libro' + '/' + ${l.id} }" th:text="${l.titolo}">Libro pubblicato</a></li>
+			</ul>
+			<br>
+		</div>
+	</div>
+	<br>
+    <footer th:replace="fragments/base.html :: footer('/default')"></footer>
+</body>
+</html>

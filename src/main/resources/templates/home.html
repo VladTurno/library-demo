@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='Library Demo - Home')"></head>
+<body>
+	<header th:replace="fragments/base.html :: header"></header>
+    <div>
+    	<br>
+    	<h2 th:text="#{header.menuUtente}">Menu utente - operazioni disponibili: </h2>
+    	<br>
+    	<div class="scatola">
+    		<br>
+			<div>
+				<a href="libri" th:href="@{/libri}">Visualizza Libri</a>
+			</div>
+			<br>
+			<div>
+				<a th:href="@{/autori}">Visualizza Autori</a>
+			</div>
+			<br>
+			<div>
+				<a th:href="@{/editori}">Visualizza Editori</a>
+			</div>
+    		<br>
+	   		<div>
+				<a th:href="@{/logout}">Logout</a>
+	   		</div>
+	   		<br>
+   		</div>
+    </div>
+</body>
+</html>

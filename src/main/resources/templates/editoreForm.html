@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Library Demo - Nuovo editore')"></head>
+<body>
+	<header th:replace="fragments/base.html :: header"></header>
+	<div>
+		<br>
+		<h2>Inserisci nuovo editore: </h2>
+		<br>
+		<div class="scatola">
+			<form th:action="@{/editore}" method="POST" th:object="${editore}">
+			<div th:if="${#fields.hasGlobalErrors()}">
+	    		<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">ERRORE</p> 
+	  		</div>
+	  		<br>
+	  		<div>
+	    		<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span><br>
+	    		<span><input placeholder="Nome" type="text" th:field="*{nome}" /></span>
+	  		</div> 
+	  		<br>
+	 		 <div>
+	 			 <span th:if="${#fields.hasErrors('annoFondazione')}" th:errors="*{annoFondazione}"></span><br>
+	    		<span><input placeholder="Anno di fondazione" type="number" th:field="*{annoFondazione}" /></span>
+	 		 </div> 
+	 		 <br>
+	  		 <div>
+	  		 	<span th:if="${#fields.hasErrors('paese')}" th:errors="*{paese}"></span><br>
+	    		<span><input placeholder="Paese" type="text" th:field="*{paese}" /></span>
+	  		 </div> 
+	  		 <br>
+	 		 <div>
+	    		<span><button type="submit">Conferma</button></span>
+	  		 </div>
+	  		 <br>
+		</form>
+		</div>
+	</div>
+	<br>
+    <footer th:replace="fragments/base.html :: footer('/default')"></footer>
+</body>
+</html>

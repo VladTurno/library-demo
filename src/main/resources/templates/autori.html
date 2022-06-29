@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Library Demo - Autori')"></head>
+<body>
+	<header th:replace="fragments/base.html :: header"></header>
+	<div>
+		<br>
+		<h2>Elenco autori inseriti: </h2>
+		<br>
+		<div class="scatola">
+			<table>
+			<tr>
+				<th>Nome</th><th>Cognome</th><th>Dettagli</th>
+			</tr>
+			<tr th:each="autore : ${autori}">
+			<td th:text="${autore.nome}">nome</td>
+			<td th:text="${autore.cognome}">cognome</td>
+			<td><a href="autore.html" th:href="@{'/autore' + '/' + ${autore.id} }" th:text="dettagli">dettagli</a></td>
+		</table>
+		</div>
+	</div>
+	<br>
+    <footer th:replace="fragments/base.html :: footer('/default')"></footer>
+</body>
+</html>

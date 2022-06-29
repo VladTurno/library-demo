@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Library Demo - Login')"></head>
+<body>
+	<header th:replace="fragments/base.html :: header"></header>
+	<div>
+		<br>
+		<h2>Login</h2>
+		<br>
+		<div class="scatola">
+			<form th:action="@{/login}" method="POST">
+				<div>
+					<br><span><input name="username" placeholder="Username" type="text" required /></span>	
+					<br><span><input name="password" placeholder="Password" type="password" required /></span>
+					<br>
+					<br><span><button type="submit">Invia</button></span><br>
+					<br>
+				</div>
+			</form>
+		</div>
+	</div>
+	<br>
+    <footer th:replace="fragments/base.html :: footer(home='/')"></footer>
+</body>
+</html>

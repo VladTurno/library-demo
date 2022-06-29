@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Library Demo - Editori')"></head>
+<body>
+	<header th:replace="fragments/base.html :: header"></header>
+	<div>
+		<br>
+		<h2>Elenco editori inseriti: </h2>
+		<br>
+		<div class="scatola">
+			<table>
+			<tr>
+				<th>Nome</th><th>Paese</th><th>Dettagli</th>
+			</tr>
+			<tr th:each="editore : ${editori}">
+			<td th:text="${editore.nome}">nome</td>
+			<td th:text="${editore.paese}">paese</td>
+			<td><a href="editore.html" th:href="@{'/editore' + '/' + ${editore.id} }" th:text="dettagli">dettagli</a></td>
+		</table>
+		</div>
+	</div>
+	<br>
+    <footer th:replace="fragments/base.html :: footer('/default')"></footer>
+</body>
+</html>

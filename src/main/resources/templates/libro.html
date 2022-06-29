@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Library Demo - Dettagli Libro')"></head>
+<body>
+	<header th:replace="fragments/base.html :: header"></header>
+	<div>
+		<br>
+		<h2>Dettagli libro: </h2>
+		<br>
+		<div class="scatola">
+			<br>
+			<span>Id:</span><span>&nbsp;</span>
+			<span th:text="${libro.id}">id</span><br><br>
+			<span>Titolo:</span><span>&nbsp;</span>
+			<span th:text="${libro.titolo}">titolo</span><br><br>
+			<span>Trama:</span><span>&nbsp;</span>
+			<span th:text="${libro.trama}">trama</span><br><br>
+			<span>Autore:</span><span>&nbsp;</span>
+			<span><a href="autore.html" th:href="@{'/autore' + '/' + ${libro.getAutore().getId()} }" th:text="${libro.getAutore().getNomeCompleto()}">autore</a></span><br><br>
+			<span>Editore:</span><span>&nbsp;</span>
+			<span><a href="editore.html" th:href="@{'/editore' + '/' + ${libro.getEditore().getId()} }" th:text="${libro.getEditore().getNome()}">editore</a></span><br><br>
+			<br>
+		</div>
+	</div>
+	<br>
+    <footer th:replace="fragments/base.html :: footer('/default')"></footer>
+</body>
+</html>

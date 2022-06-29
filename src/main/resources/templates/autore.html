@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Library Demo - Dettagli Autore')"></head>
+<body>
+	<header th:replace="fragments/base.html :: header"></header>
+	<div>
+		<br>
+		<h2>Dettagli autore: </h2>
+		<br>
+		<div class="scatola">
+			<br>
+			<span>Id:</span><span>&nbsp;</span>
+			<span th:text="${autore.id}">id</span><br><br>
+			<span>Nome:</span><span>&nbsp;</span>
+			<span th:text="${autore.nome}">nome</span><br><br>
+			<span>Cognome:</span><span>&nbsp;</span>
+			<span th:text="${autore.cognome}">cognome</span><br><br>
+			<span>Anno di nascita:</span><span>&nbsp;</span>
+			<span th:text="${autore.annoNascita}">annoNascita</span><br><br>
+			<span>Luogo di nascita:</span><span>&nbsp;</span>
+			<span th:text="${autore.cittaNatale}">cittaNatale</span><br><br>
+			<span>Opere scritte:</span><span>&nbsp;</span>
+			<ul th:each="l : ${libri}">
+				<li><a href="libro.html"  th:href="@{'/libro' + '/' + ${l.id} }" th:text="${l.titolo} + ' ('+ ${l.getEditore().getNome()}+')'">Libro scritto</a></li>
+			</ul>
+			<br>
+		</div>
+	</div>
+	<br>
+    <footer th:replace="fragments/base.html :: footer('/default')"></footer>
+</body>
+</html>

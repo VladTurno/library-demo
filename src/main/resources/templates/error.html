@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <h1>Error!</h1>
+   <div class="errorPage">
+      <p>
+         Sembra che ci sia un problema con la risorsa richiesta 
+		( <span th:text="${path}" /> ).
+      </p>
+      <p th:text="${'Details: ' + message}" />
+      <p th:text="${'Status: ' + status}" />
+   </div>
+</html>
