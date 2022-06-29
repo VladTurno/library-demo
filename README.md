@@ -6,6 +6,8 @@ MALFUNZIONAMENTI NOTI:
 SpringSecurity) non so perchè e percome ma dopo acer implementato con successo l'autenticazione di utenti del tipo user e admin il template resolver dà errore quando provo ad accedere a qualsiasi risorsa nella cartella /admin che non sia la homepage (quest'ultima  risolta correttamente dal template resolver e le autorizzazioni in authConfiguration sembrano essere corrette).
 Ho messo una pezza mettendo tutte le risorse nella cartella templates e prendendo vari accorgimenti per fare in modo che le risorse riservate agli admin fossero accessibili solo dal menu admin (correttamente risolto dal template resolver e situato nella cartella menu/admin/**)
 
+Modifica ed Elimina) ho implementato pulsanti per modificare ed eliminare le entità. Le due funzioni applicate a autori ed editori funzionano correttamente, mentre applicate agli oggetti di tipo libro no, e non riesco a venirne a capo.
+
 SPECIFICHE DEL MODELLO DI DOMINIO:
 
 La webapp è un semplice tool per la gestione di una libreria digitale. Nel modello sono presenti tre classi: Libri, autori ed editori. 
@@ -26,3 +28,6 @@ d) un admin, previa registrazione, può accedere a un menu dal quale è possibil
 e) un admin che inserisce un nuovo autore o editore non ha vincoli particolari, ma quando un admin inserisce un libro può scegliere autore ed editore da un menu a tendina che mostra solo autori ed editori precedentemente inseriti.
 
 f) un admin che visualizza la lista dei libri/autori/editori non visualizza la lista che visualizza un utente generico, ma ne visualizza una arricchita da pulsanti per effettuare operazioni di modifica e cancellazione
+
+g) un admin può modificare o eliminare un autore o un editore
+
